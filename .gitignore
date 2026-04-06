@@ -1,0 +1,6 @@
+# Ignore plugin installation folders
+/plugin/
+/lazy-lock.json  # Optional: some keep this to pin versions
+*.swp
+.netrwhist
+
