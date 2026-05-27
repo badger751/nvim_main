@@ -54,3 +54,6 @@ vim.keymap.set("n", "<F5>", function()
     },
   })
 end, { desc = "Save and Run File (F5)" })
+-- Exit terminal mode quickly using jk or double Escape
+vim.keymap.set("t", "jk", [[<C-\><C-n>]], { desc = "Exit terminal mode" })
+vim.keymap.set("t", "<Esc><Esc>", [[<C-\><C-n>]], { desc = "Exit terminal mode" })

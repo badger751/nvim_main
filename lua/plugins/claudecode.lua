@@ -10,7 +10,7 @@ return {
     },
 
     opts = {
-      terminal_cmd = "/Users/user/.local/bin/claude",
+      terminal_cmd = vim.fn.expand("$HOME") .. "/.local/bin/claude",
       auto_start = true,
     },
 
