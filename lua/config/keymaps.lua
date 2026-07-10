@@ -20,8 +20,19 @@ vim.keymap.set("n", "<F5>", function()
 
   local cmd = ""
   if ft == "python" then
+    local python_bin = "python3"
+    local cwd = vim.fn.getcwd()
+    if vim.fn.executable(cwd .. "/.venv/bin/python") == 1 then
+      python_bin = cwd .. "/.venv/bin/python"
+    elseif vim.fn.executable(cwd .. "/self_env/bin/python") == 1 then
+      python_bin = cwd .. "/self_env/bin/python"
+    elseif vim.fn.executable(cwd .. "/venv/bin/python") == 1 then
+      python_bin = cwd .. "/venv/bin/python"
+    elseif vim.env.VIRTUAL_ENV then
+      python_bin = vim.env.VIRTUAL_ENV .. "/bin/python"
+    end
     -- 'read' waits for you to press Enter before closing
-    cmd = "python3 " .. file .. "; echo -e '\n--- Process Finished ---\nPress Enter to close'; read"
+    cmd = python_bin .. " " .. file .. "; echo -e '\\n--- Process Finished ---\\nPress Enter to close'; read"
   elseif ft == "cpp" then
     -- Compile and then run, followed by 'read'
     cmd = "g++ -std=c++20 "
